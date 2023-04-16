@@ -1,0 +1,33 @@
+{
+  "name": "sse-pubsub",
+  "version": "1.0.0",
+  "description": "Server-sent events with pub/sub interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/tests.mjs --exit",
+    "start": "node demo/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ale4ko69/sse-pubsub.git"
+  },
+  "keywords": [
+    "sse",
+    "http",
+    "server",
+    "pubsub"
+  ],
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://github.com/ale4ko69/sse-pubsub#readme",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "mocha": "^9.1.3",
+    "node-fetch": "^3.0.0"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "eventemitter2": "^6.4.9"
+  }
+}

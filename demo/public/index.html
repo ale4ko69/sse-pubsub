@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SSE demo</title>
+	<meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
+	<link rel="icon" href="data:; base64,iVBORw0KGgo=">
+	<style>
+		body {
+			margin: 20px;
+			font: sans-serif;
+		}
+		.layout {
+			margin: 0 auto;
+			max-width: 900px;
+			min-width: 70%;
+		}
+		section {
+			display: flex;
+			flex-flow: row;
+			justify-content: space-around;
+		}
+		.channel {
+			flex: 0 0 50%;
+			margin: 10px;
+		}
+		.eventlog {
+			border: 1px solid #777;
+		 	overflow: scroll;
+			height: 200px;
+			overflow-x: hidden;
+			padding: 5px 0 0 5px;
+		}
+		.userEventlog{
+			display: flex;
+			flex-flow: row;
+			flex-direction: column;
+			width: 100%;
+			margin: 10px;
+			border: 1px solid #777;
+		 	overflow: scroll;
+			height: 200px;
+			overflow-x: hidden;
+			padding: 5px 5px 0 5px;
+		}
+		.userEventlog div{
+			display: flex;
+			background-color: #f7f1f1;
+			color:#7a7979;
+			font-weight: 500;
+			padding: 2px;
+			margin: 1px 0;
+		}
+		.userEventlog div:nth-child(odd) {
+			background-color: #b8b5b5;
+			color:#ffffff;
+		}
+		.input-wrapper {
+			margin: 10px 0;
+		}
+		.input-message {
+			width: 50%;
+			padding: 4px;
+
+		}
+		.button-14 {
+			background-image: linear-gradient(#f7f8fa ,#e7e9ec);
+			border-color: #adb1b8 #a2a6ac #8d9096;
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 3px;
+			box-shadow: rgba(255,255,255,.6) 0 1px 0 inset;
+			box-sizing: border-box;
+			color: #0f1111;
+			cursor: pointer;
+			display: inline-block;
+			font-family: "Amazon Ember",Arial,sans-serif;
+			font-size: 14px;
+			height: 29px;
+			font-size: 13px;
+			outline: 0;
+			overflow: hidden;
+			padding: 0 11px;
+			text-align: center;
+			text-decoration: none;
+			text-overflow: ellipsis;
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+			white-space: nowrap;
+		}
+		.button-14:active {
+			border-bottom-color: #a2a6ac;
+		}
+		.button-14:active:hover {
+			border-bottom-color: #a2a6ac;
+		}
+		.button-14:hover {
+			border-color: #a2a6ac #979aa1 #82858a;
+		}
+		.button-14:focus {
+			border-color: #e77600;
+			box-shadow: rgba(228, 121, 17, .5) 0 0 3px 2px;
+			outline: 0;
+		}
+		#data-channel {
+			display: none;
+		}
+	</style>
+</head>
+<body class='online'>
+	<div class="layout">
+	<h1>SSE pubsub for nodeJS</h1>
+	<p>This page connects to two SSE streams, and outputs the events to the log containers below as they are received.</p>
+	<div>
+		<div>
+			<button class="button-14" role="button"  onclick="closeChannel()">Close SSE connection</button>
+			<button class="button-14" role="button"  onclick="subscribeNew('my-message')">Subcribe for "my-message" event</button>
+
+		</div>
+		<div class="input-wrapper">
+			<input type="text" class="input-message" id="msg" />
+			<button class="button-14" role="button" id="btn-msg" onclick="sendMessage()">Send Message</button>
+		</div>
+	</div>
+
+	<section style="flex-flow: column;">
+		<h2>Messages Channel</h2>
+		<div class='userEventlog' id="single-ch"></div>
+	</section>
+</body>
+<script src='moment.js'></script>
+<script src='scripts.js'></script>
+<script>
+	let channel = createChannelsByUserToken();
+	const btnMsg = document.querySelector("#btn-msg");
+	const inpMsg = document.querySelector("#msg");
+	const elem = document.querySelector('#switch');
+</script>
+</html>
